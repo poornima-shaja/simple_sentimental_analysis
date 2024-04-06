@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lyrics Analysis</title>
+    <style>
+        /* Apply CSS styles directly within this <style> block */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #800080;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+  
+    <h1>Sentiment Analysis for {{ song_name }}</h1>
+    <table>
+       
+        <tr>
+            <td>emotion</td>
+            <td>count</td>
+          </tr>
+          {% for emotion, count in emotion_counts.items() %}
+        <tr>
+          <td>{{ emotion }}</td>
+          <td>{{ count }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+
+      <h3>Modified Lyrics:</h3>
+      <p>{{ modified_lyrics | safe }}</p>  <!-- Use the "safe" filter to render HTML tags -->
+      <ul>
+        {% for word in emotion_words %}
+            <li>{{ word }}</li>
+        {% endfor %}
+    </ul>
+    
+      <h3>Emotion Bar Chart:</h3>
+    <img src="{{ image_url }}" alt="Emotion Graph">
+
+    
+</body>
+</html>

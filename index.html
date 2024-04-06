@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BTS Lyrics Analyzer</title>
+
+    <style>
+        /* Apply CSS styles directly within this <style> block */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #0077b6;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #0077b6;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #005f8f;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>BTS Lyrics Analyzer - BTS Song Sentiment</h1>
+    <!-- Dropdown list for BTS song names -->
+    <form method="POST" action="/analyze">
+        <label for="song_name">Select BTS Song:</label>
+        <select id="song_name" name="song_name">
+            <option value="">-- Select a BTS Song --</option>  <!-- Empty option -->
+            {% for song in songs %}
+            <option value="{{ song.song_name }}">{{ song.song_name }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <!-- Input field for user's lyrics -->
+        <label for="song_name">Song name:</label>
+        <input type="text" id="fname" name="user_song"><br><br>
+        <label for="user_lyrics">Enter Your Lyrics:</label>
+        <textarea id="user_lyrics" name="user_lyrics" rows="5" cols="50" ></textarea>
+        <br><br>
+        <input type="submit" value="Analyze">
+    </form>
+</body>
+</html>
